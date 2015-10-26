@@ -1,12 +1,12 @@
 ﻿namespace LinqFish
 
-    module Chunker =
-        open System
-        open System.Text
+module Chunker =
+    open System
+    open System.Text
 
-        type Chunker(locale : string) =
+    type Chunker(locale : string) =
 
-            let bigrams (args : string) =
-                args.Split(' ')
+        let bigrams (args : string) =
+            args.Split(' ')
 
-            member this.Locale = locale
+        member this.Locale = locale
