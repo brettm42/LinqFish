@@ -1,9 +1,30 @@
-﻿// Learn more about F# at http://fsharp.org
-// See the 'F# Tutorial' project for more help.
+﻿module LinqFishConsole =
+    open System
+    open System.Text
+    open LinqFish
 
-open LinqFish
+    let GetBigrams(args : string, separator : char) =
+        let arr = args.Split(separator)
+        [| for a in 0 .. 1 .. (arr.Length - 2) do
+            yield (arr.[a], arr.[a + 1]) |]
 
-[<EntryPoint>]
-let main argv = 
-    printfn "Enter some text to begin:\n"
-    0
+    let public GetTrigrams(args : string, separator : char) =
+        let arr = args.Split(separator)
+        [| for a in 0 .. 2 .. (arr.Length - 3) do 
+            yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
+
+    [<EntryPoint>]
+    let main argv = 
+        printfn "Enter some text to begin:"
+        let input = Console.ReadLine()
+        printfn "\nInput:\n%s" (input.ToString())
+
+        //let result = LinqFish.Chunker.Chunker.GetBigrams(input, ' ')
+        //let result2 = LinqFish.Chunker.Chunker.GetTrigrams(input, ' ')
+        let result = GetBigrams(input, ' ')
+        let result2 = GetTrigrams(input, ' ')
+
+        printfn "\nResults\n%s" (result.ToString())
+
+        let pause = Console.ReadLine()
+        0

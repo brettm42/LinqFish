@@ -1,4 +1,7 @@
 ﻿namespace LinqFish
 
-type LinqFish() = 
-    member this.X = "F#"
+module LinqFish =
+
+    type LinqFish() = 
+        member this.X = "F#"
+    
