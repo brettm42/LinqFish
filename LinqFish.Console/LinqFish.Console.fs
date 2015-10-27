@@ -1,9 +1,13 @@
-﻿// Learn more about F# at http://fsharp.org
-// See the 'F# Tutorial' project for more help.
+﻿module Console =
+    open System
+    open LinqFish
+    open Chunker
 
-open LinqFish
-
-[<EntryPoint>]
-let main argv = 
-    printfn "Enter some text to begin:\n"
-    0
+    [<EntryPoint>]
+    let main argv = 
+        printfn "Enter some text to begin:"
+        let input = Console.ReadLine()
+        printfn "\nInput:\n%s" (input.ToString())
+        printfn "\nResults\n%s" (LinqFish.Chunker.Chunker.GetBigrams(input).ToString())
+        let pause = Console.ReadLine()
+        0
