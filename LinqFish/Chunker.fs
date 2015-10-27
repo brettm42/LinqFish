@@ -17,6 +17,10 @@ module Chunker =
             [| for a in 0 .. 2 .. (arr.Length - 3) do 
                 yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
 
-        member this.Locale = locale
+        static member public Select(grams : Array) =
+            seq { for gram in grams do
+                  if gram.ToString().Contains("select") then
+                      yield gram }
 
-        
+
+        member this.Locale = locale
