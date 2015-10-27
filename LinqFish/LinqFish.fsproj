@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="LinqFish.fs" />
-    <None Include="Script.fsx" />
     <Compile Include="Chunker.fs" />
   </ItemGroup>
   <PropertyGroup>

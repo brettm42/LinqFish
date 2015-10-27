@@ -5,28 +5,18 @@ module Chunker =
     open System.Globalization;
     open System.Text
 
-    //type public Chunker(locale : CultureInfo, input : string) =
-    type public Chunker =
+    type public Chunker(locale : CultureInfo, input : string) =
 
-        static member public GetBigrams(args : string) =
-            [| args.Split(' ') |]
-            |> Seq.skip 1
-            |> Seq.take 2
-            |> Seq.toList
+        static member public GetBigrams(args : string, separator : char) =
+            let arr = args.Split(separator)
+            [| for a in 0 .. 1 .. (arr.Length - 2) do
+                yield (arr.[a], arr.[a + 1]) |]
 
-//            [ for word in [| args.Split(' ') |] do
-//                
-//                yield () ]
-//                
-//        static member Bigrams (args : string) =
-//            let arr = [| args.Split(' ') |]
-//            
-//
-//
-//           [ for word in [| args.Split(' ') |] do
-//               
-//               yield (word, Array.in  .IndexOf(word)) ]
-                              
-        //member this.Locale = locale
+        static member public GetTrigrams(args : string, separator : char) =
+            let arr = args.Split(separator)
+            [| for a in 0 .. 2 .. (arr.Length - 3) do 
+                yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
+
+        member this.Locale = locale
 
         
