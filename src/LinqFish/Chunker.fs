@@ -18,10 +18,13 @@ module Chunker =
             [| for a in 0 .. 2 .. (arr.Length - 3) do 
                 yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
 
-        static member public Select(grams : Array) =
+        static member public SelectSeq(grams : Array) =
             seq { for gram in grams do
                   if gram.ToString().Contains("select") then
                       yield gram }
 
+        static member public Select t1 t2 =
+                match t1 with
+                | "select" -> printfn "Select! Action: %s" t2
 
         member this.Locale = locale
