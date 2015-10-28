@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LinqFish.Console", "LinqFish.Console\LinqFish.Console.fsproj", "{D25CF330-31E4-40D5-A591-CD0462BCE75A}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LinqFish.Console", "src\LinqFish.Console\LinqFish.Console.fsproj", "{D25CF330-31E4-40D5-A591-CD0462BCE75A}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LinqFish", "LinqFish\LinqFish.fsproj", "{F1C42BBC-DA02-4080-AF22-E35C9211D18F}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LinqFish", "src\LinqFish\LinqFish.fsproj", "{F1C42BBC-DA02-4080-AF22-E35C9211D18F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

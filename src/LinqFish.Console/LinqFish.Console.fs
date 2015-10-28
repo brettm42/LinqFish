@@ -14,11 +14,16 @@
             yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
 
             
-    let Select(grams : Array) =
-        seq { for gram in grams do
-            fst gram ->
-                if a.Contains("select") then
-                    yield a }
+    let Select ngram =
+        seq { match ngram with
+                | (x, y) when x.Contains("select") -> yield (x, y) }
+                //| (x, y, z) when x.Contains("select") -> yield (x, y, z) }
+                    
+    let SelectCall(grams : Array) =
+        for gram in grams do
+            match gram with
+            | ("Select", var) -> printfn "Select"
+            | ("Filter", var) -> printfn "Filter"
 
     [<EntryPoint>]
     let main argv = 

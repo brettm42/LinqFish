@@ -4,6 +4,7 @@ module Chunker =
     open System
     open System.Globalization;
     open System.Text
+    open System.Text.RegularExpressions;
 
     type public Chunker(locale : CultureInfo, input : string) =
 
