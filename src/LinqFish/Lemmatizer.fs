@@ -1,6 +1,6 @@
 ﻿namespace LinqFish
 
-module Chunker =
+module Lemmatizer =
     open System
     open System.Globalization;
     open System.Text

@@ -1,6 +1,6 @@
 ﻿namespace LinqFish
 
-module Chunker =
+module Stemmer =
     open System
     open System.Globalization;
     open System.Text
