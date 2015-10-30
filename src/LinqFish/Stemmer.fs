@@ -1,6 +1,6 @@
 ﻿namespace LinqFish
 
-module Chunker =
+module Stemmer =
     open System
     open System.Globalization;
     open System.Text
@@ -8,16 +8,12 @@ module Chunker =
 
     type public Stemmer(locale : CultureInfo) =
 
-        static member public GetBigrams(args : string, separator : char) =
-            let arr = args.Split(separator)
-            [| for a in 0 .. 1 .. (arr.Length - 2) do
-                yield (arr.[a], arr.[a + 1]) |]
+        static member public Affixes = 
+            [| "es", "ed", "ing", "en", "ness", "ly", "able", "tion" |]
 
-        static member public GetTrigrams(args : string, separator : char) =
-            let arr = args.Split(separator)
-            [| for a in 0 .. 2 .. (arr.Length - 3) do 
-                yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
+        static member public GetStem(v, n) =
+            match v with
+            | Affixes -> printfn "found an affix! %s" v
+            | _ -> printfn "null"
                 
-
-
         member this.Locale = locale
