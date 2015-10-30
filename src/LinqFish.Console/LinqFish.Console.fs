@@ -22,8 +22,10 @@
         | "filter" -> printfn "Filter! Action: %s" t2
         | _ -> printfn "null"
 
-    let Stemmer(v, n) =
-        v
+     let GetStem(v, n) =
+        match v with
+        | "able" -> printfn "found an affix! %s" v
+        | _ -> printfn "No match %s" v
 
     [<EntryPoint>]
     let main argv = 
@@ -47,6 +49,7 @@
         let matcher =
             for pair in GetBigrams(input, ' ') do
                 Select pair
+                GetStem pair
 
         let pause = Console.ReadLine()
         0
