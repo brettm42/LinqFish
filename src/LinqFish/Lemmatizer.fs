@@ -8,16 +8,7 @@ module Lemmatizer =
 
     type public Lemmatizer(locale : CultureInfo) =
 
-        static member public GetBigrams(args : string, separator : char) =
-            let arr = args.Split(separator)
-            [| for a in 0 .. 1 .. (arr.Length - 2) do
-                yield (arr.[a], arr.[a + 1]) |]
-
-        static member public GetTrigrams(args : string, separator : char) =
-            let arr = args.Split(separator)
-            [| for a in 0 .. 2 .. (arr.Length - 3) do 
-                yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
-
-
+        static member public GetLemma(v, n) =
+            0
 
         member this.Locale = locale

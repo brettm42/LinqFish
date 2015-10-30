@@ -22,9 +22,12 @@ module Chunker =
             seq { for gram in grams do
                   if gram.ToString().Contains("select") then
                       yield gram }
-
-        static member public Select t1 t2 =
-                match t1 with
-                | "select" -> printfn "Select! Action: %s" t2
+                      
+        static member public Select(t1, t2) =
+            match t1 with
+            | "select" -> printfn "Select! Action: %s" t2
+            | "test" -> printfn "Test! Action: %s" t2
+            | "filter" -> printfn "Filter! Action: %s" t2
+            | _ -> printfn "null"
 
         member this.Locale = locale

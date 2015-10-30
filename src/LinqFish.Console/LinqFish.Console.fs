@@ -1,6 +1,8 @@
 ﻿module LinqFishConsole =
     open System
+    open System.IO;
     open System.Text
+    open System.Text.RegularExpressions;
     open LinqFish
 
     let GetBigrams(args : string, separator : char) =
@@ -13,20 +15,15 @@
         [| for a in 0 .. 2 .. (arr.Length - 3) do 
             yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
 
-    let Select (t1, t2) =
+    let Select(t1, t2) =
         match t1 with
         | "select" -> printfn "Select! Action: %s" t2
-        
-//    let Select ngram =
-//        seq { match ngram with
-//                | (x, y) when x.Contains("select") -> yield (x, y) }
-//                //| (x, y, z) when x.Contains("select") -> yield (x, y, z) }
-//                    
-//    let SelectCall(grams : Array) =
-//        for gram in grams do
-//            match gram with
-//            | ("Select", var) -> printfn "Select"
-//            | ("Filter", var) -> printfn "Filter"
+        | "test" -> printfn "Test! Action: %s" t2
+        | "filter" -> printfn "Filter! Action: %s" t2
+        | _ -> printfn "null"
+
+    let Stemmer(v, n) =
+        v
 
     [<EntryPoint>]
     let main argv = 
