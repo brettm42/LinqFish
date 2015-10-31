@@ -15,11 +15,11 @@
         [| for a in 0 .. 2 .. (arr.Length - 3) do 
             yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
 
-    let Select(t1, t2) =
-        match t1 with
-        | "select" -> printfn "Select! Action: %s" t2
-        | "test" -> printfn "Test! Action: %s" t2
-        | "filter" -> printfn "Filter! Action: %s" t2
+    let Select(t, p) =
+        match t with
+        | "select" -> printfn "Select! Action: %s" p
+        | "test" -> printfn "Test! Action: %s" p
+        | "filter" -> printfn "Filter! Action: %s" p
         | _ -> printfn "null"
 
      let GetStem(v, n) =
@@ -35,7 +35,6 @@
 
         //let result = LinqFish.Chunker.Chunker.GetBigrams(input, ' ')
         //let result2 = LinqFish.Chunker.Chunker.GetTrigrams(input, ' ')
-//        
 //        printfn "Bigrams:\n%s" <| GetBigrams(input, ' ')
 //        printfn "Trigrams:\n%s" <| GetTrigrams(input, ' ')
 //        printfn "Selected Bigrams:\n%s" <| Select <| GetBigrams(input, ' ')
