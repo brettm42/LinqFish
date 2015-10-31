@@ -2,9 +2,9 @@
 
 module Chunker =
     open System
-    open System.Globalization;
+    open System.Globalization
     open System.Text
-    open System.Text.RegularExpressions;
+    open System.Text.RegularExpressions
 
     type public Chunker(locale : CultureInfo, input : string) =
 
@@ -23,11 +23,11 @@ module Chunker =
                   if gram.ToString().Contains("select") then
                       yield gram }
                       
-        static member public Select(t1, t2) =
-            match t1 with
-            | "select" -> printfn "Select! Action: %s" t2
-            | "test" -> printfn "Test! Action: %s" t2
-            | "filter" -> printfn "Filter! Action: %s" t2
+        static member public Select(t, p) =
+            match t with
+            | "select" -> printfn "Select! Action: %s" p
+            | "test" -> printfn "Test! Action: %s" p
+            | "filter" -> printfn "Filter! Action: %s" p
             | _ -> printfn "null"
 
         member this.Locale = locale
