@@ -2,9 +2,9 @@
 
 module Lemmatizer =
     open System
-    open System.Globalization;
+    open System.Globalization
     open System.Text
-    open System.Text.RegularExpressions;
+    open System.Text.RegularExpressions
 
     type public Lemmatizer(locale : CultureInfo) =
 
