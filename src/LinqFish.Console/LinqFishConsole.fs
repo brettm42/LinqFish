@@ -8,8 +8,13 @@ module LinqFishConsole =
     
     open LinqFish
 
-    let GetBigrams (args : string, separator : char) =
+    let GetBigramsSep (args : string, separator : char) =
         let arr = args.Split(separator)
+        [| for a in 0 .. 1 .. (arr.Length - 2) do
+            yield (arr.[a], arr.[a + 1]) |]
+
+    let GetBigrams (args : string) =
+        let arr = args.Split(' ')
         [| for a in 0 .. 1 .. (arr.Length - 2) do
             yield (arr.[a], arr.[a + 1]) |]
 
@@ -21,20 +26,21 @@ module LinqFishConsole =
     let Select (t, p) =
         match t with
         | "select" -> printfn "Select! Action: %s" p
-        | "test" -> printfn "Test! Action: %s" p
         | "filter" -> printfn "Filter! Action: %s" p
+        | "where" -> printfn "Where! Action: %s" p
+        | "take" -> printfn "Take! Action: %s" p
         | _ -> printfn "null"
-
-     let GetStem (v, n) =
+        
+    let GetStem (v, n) =
         match v with
-        | "able" -> printfn "found an affix! %s" v
+        | "able" -> printfn "found affix, %s" v
         | _ -> printfn "No match %s" v
+        
         
     [<EntryPoint>]
     let main argv = 
         printfn "Enter some text to begin:"
         let input = Console.ReadLine()
-        printfn "\nInput:\n%s" (input.ToString())
 
         //let result = LinqFish.Chunker.Chunker.GetBigrams(input, ' ')
         //let result2 = LinqFish.Chunker.Chunker.GetTrigrams(input, ' ')
@@ -48,9 +54,14 @@ module LinqFishConsole =
         //let result4 = Select(result2)
 
         let matcher =
-            for pair in GetBigrams(input, ' ') do
+            for pair in GetBigramsSep(input, ' ') do
                 Select pair
                 GetStem pair
 
+        let stemmer =
+            input
+            |> GetBigrams
+            |> Seq.iter GetStem
+            
         let pause = Console.ReadLine()
         0
