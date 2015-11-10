@@ -5,15 +5,18 @@ module Stemmer =
     open System.Globalization
     open System.Text
     open System.Text.RegularExpressions
+    
+    let public Affixes = 
+        [| "es", "ed", "ing", "en", "ness", "ly", "able", "tion" |]
 
-    type public Stemmer =
+    let isAffix s =
+        Affixes |> Seq.iter(
+            if (Regex.IsMatch(s, m)) then Regex.Replace(s, m)
+            else String.Empty)
 
-        static member public Affixes = 
-            [| "es", "ed", "ing", "en", "ness", "ly", "able", "tion" |]
-
-        static member public GetStem(v, n) =
-            match v with
-            | Affixes -> printfn "found an affix! %s" v
-            | _ -> printfn "null"
+    let public GetStem(v, n) =
+        function
+        | isAffix(v) -> printfn "found an affix! %s" v
+        | _ -> printfn "null"
                 
-        member this.Locale = "en-US"
+    let Locale = Globalization.CultureInfo.GetCultureInfo("en-US")

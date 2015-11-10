@@ -6,9 +6,7 @@ module Lemmatizer =
     open System.Text
     open System.Text.RegularExpressions
 
-    type public Lemmatizer =
+    let public GetLemma(v, n) =
+        v
 
-        static member public GetLemma(v, n) =
-            0
-
-        member public this.Locale = "en-US"
+    let Locale = Globalization.CultureInfo.GetCultureInfo("en-US")
