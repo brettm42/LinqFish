@@ -46,7 +46,6 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Lemmatizer.fs" />
     <Compile Include="Stemmer.fs" />
-    <Compile Include="LinqFish.fs" />
     <Compile Include="Chunker.fs" />
   </ItemGroup>
   <PropertyGroup>
