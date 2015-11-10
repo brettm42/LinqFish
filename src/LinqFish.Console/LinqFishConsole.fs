@@ -4,37 +4,15 @@ module LinqFishConsole =
     open System
     open System.IO
     open System.Text
-    open System.Text.RegularExpressions
     
-    open LinqFish
-
-    let GetBigrams (args : string, separator : char) =
-        let arr = args.Split(separator)
-        [| for a in 0 .. 1 .. (arr.Length - 2) do
-            yield (arr.[a], arr.[a + 1]) |]
-
-    let GetTrigrams (args : string, separator : char) =
-        let arr = args.Split(separator)
-        [| for a in 0 .. 2 .. (arr.Length - 3) do 
-            yield (arr.[a], arr.[a + 1], arr.[a + 2]) |]
-
-    let Select (t, p) =
-        match t with
-        | "select" -> printfn "Select! Action: %s" p
-        | "test" -> printfn "Test! Action: %s" p
-        | "filter" -> printfn "Filter! Action: %s" p
-        | _ -> printfn "null"
-
-     let GetStem (v, n) =
-        match v with
-        | "able" -> printfn "found an affix! %s" v
-        | _ -> printfn "No match %s" v
-        
+    open LinqFish.Chunker
+    open LinqFish.Lemmatizer
+    open LinqFish.Stemmer
+                
     [<EntryPoint>]
     let main argv = 
         printfn "Enter some text to begin:"
         let input = Console.ReadLine()
-        printfn "\nInput:\n%s" (input.ToString())
 
         //let result = LinqFish.Chunker.Chunker.GetBigrams(input, ' ')
         //let result2 = LinqFish.Chunker.Chunker.GetTrigrams(input, ' ')
@@ -48,9 +26,14 @@ module LinqFishConsole =
         //let result4 = Select(result2)
 
         let matcher =
-            for pair in GetBigrams(input, ' ') do
-                Select pair
-                GetStem pair
+            for pair in Chunker.GetBigramsSep(input, ' ') do
+                Chunker.Select pair
+                Stemmer.GetStem pair
 
+        let stemmer =
+            input
+            |> Chunker.GetBigrams
+            |> Seq.iter Stemmer.GetStem
+            
         let pause = Console.ReadLine()
         0

@@ -6,7 +6,7 @@ module Stemmer =
     open System.Text
     open System.Text.RegularExpressions
 
-    type public Stemmer(locale : CultureInfo) =
+    type public Stemmer =
 
         static member public Affixes = 
             [| "es", "ed", "ing", "en", "ness", "ly", "able", "tion" |]
@@ -16,4 +16,4 @@ module Stemmer =
             | Affixes -> printfn "found an affix! %s" v
             | _ -> printfn "null"
                 
-        member this.Locale = locale
+        member this.Locale = "en-US"
