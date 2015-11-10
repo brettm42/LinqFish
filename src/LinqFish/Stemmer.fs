@@ -11,7 +11,7 @@ module Stemmer =
 
     let isAffix s =
         Affixes |> Seq.iter(
-            if (Regex.IsMatch(s, m)) then Regex.Replace(s, m)
+            if (Regex.IsMatch(s, m)) then Regex.Replace(s, m, String.Empty)
             else String.Empty)
 
     let public GetStem(v, n) =
