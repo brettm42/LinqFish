@@ -6,9 +6,7 @@ module LinqFishConsole =
     open System
     open System.IO
     open System.Text
-    
-    //open LinqFish
-                
+                    
     [<EntryPoint>]
     let main argv = 
         printfn "Enter some text to begin:"
