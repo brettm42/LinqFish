@@ -18,7 +18,6 @@ module Stemmer =
 
     let public GetStem(v:string, n) =
         let length = String.length(v) - 1
-        // TODO take increasing slices of the ends and check: Array.tryFind (fun s -> s == slice) Affixes
         for c = 0 to length do
             let prefix = Seq.tryFind (fun sl -> sl = v.[0..c]) Prefixes
             let postfix = Seq.tryFind (fun sl -> sl = v.[c..length]) Postfixes
