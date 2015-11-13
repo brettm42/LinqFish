@@ -25,11 +25,11 @@ module LinqFishConsole =
 //        let result3 = Chunker.Select(result)
 //        let result4 = Chunker.Select(result2)
 
-        let matcher =
-            for pair in Chunker.GetBigramsSep(input, ' ') do
-                Chunker.Select pair
-                Stemmer.GetStem pair
-
+//        let matcher =
+//            for pair in Chunker.GetBigramsSep(input, ' ') do
+//                Chunker.Select pair
+//                Stemmer.GetStem pair
+//                
         let stemmer =
             input
             |> Chunker.GetBigrams

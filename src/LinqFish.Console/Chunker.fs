@@ -23,9 +23,10 @@ module Chunker =
 
     let public GetBigrams (args : string) =
         let arr = args.Split(' ')
-        [| for a in 0 .. 1 .. (arr.Length - 2) do
+        printfn "Found %i bigrams" arr.Length
+        [| for a in 0 .. 1 .. (arr.Length - 1) do
             if a = 0 then yield ("", arr.[a + 1])
-            else if a = arr.Length - 2 then yield (arr.[a], "")
+            else if a = arr.Length - 1 then yield (arr.[a], "")
             else yield (arr.[a], arr.[a + 1]) |]
 
     let public Select(t, p) =
