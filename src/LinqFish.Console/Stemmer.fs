@@ -10,12 +10,7 @@ module Stemmer =
         
     let public Prefixes = 
         seq [ "pre"; "un"; "non"; "anti"; ]
-
-//    let isAffix s =
-//        Affixes |> Seq.iter(
-//            if (Regex.IsMatch(s, m)) then Regex.Replace(s, m, String.Empty)
-//            else String.Empty)
-
+        
     let public GetStem(v:string, n) =
         let length = String.length(v) - 1
         for c = 0 to length do
