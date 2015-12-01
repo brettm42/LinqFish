@@ -8,12 +8,11 @@ module Chunker =
     open System.Text.RegularExpressions
     
     let public GetBigrams (args : string) =
-        let arr =("^" + args + "$").Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+        let arr = ("^ " + args + " $").Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
         let len = arr.Length - 1
         [| for a in 0 .. 1 .. len do
-            match a with
-            | len -> yield (arr.[a], "")
-            | _ -> yield (arr.[a], arr.[a + 1]) |]
+            if a = len then yield (arr.[a], "")
+            else yield (arr.[a], arr.[a + 1]) |]
                                                  
     let public GetBigramsSep (args : string, separator : char) =
         let arr =("^" + args + "$").Split(separator)
