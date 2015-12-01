@@ -30,9 +30,13 @@ module LinqFishConsole =
 //                Chunker.Select pair
 //                Stemmer.GetStem pair
 //                
-        let Printer bigram =
+        let BiPrinter bigram =
             for (a, b) in bigram do
                 printfn "Bigram: %s %s" a b
+
+        let TriPrinter trigram =
+            for (a, b, c) in trigram do
+                printfn "Trigram: %s %s %s" a b c
 
         let stemmerBi =
             input
@@ -42,11 +46,12 @@ module LinqFishConsole =
         let stemmer = 
             input
             |> Chunker.GetBigrams
-            |> Printer
+            |> BiPrinter
             
         let stemmerTri =
             input
             |> Chunker.GetTrigrams
+            |> TriPrinter
             
 
         let pause = Console.ReadLine()

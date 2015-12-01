@@ -6,12 +6,12 @@ module Stemmer =
     open System.Text.RegularExpressions
     
     let public Postfixes = 
-        seq [ "es"; "ed"; "ing"; "en"; "ness"; "ly"; "able"; "tion"; "s"; ]
+        seq [ "es"; "ed"; "ing"; "en"; "ness"; "ly"; "able"; "esque"; "tion"; "s"; ]
         
     let public Prefixes = 
         seq [ "pre"; "un"; "non"; "anti"; ]
         
-    let public GetStem(v:string, n) =
+    let public GetStem(v : string, n) =
         let length = String.length(v) - 1
         for c = 0 to length do
             let prefix = Seq.tryFind (fun sl -> sl = v.[0..c]) Prefixes
@@ -21,4 +21,13 @@ module Stemmer =
             if postfix.IsSome then
                 printfn "Found postfix in %s! %s" v (postfix.Value.ToString())
                 
+    let public GetStems(a : string, b) =
+        let length = String.length(a) - 1
+        let stems = [ ]
+        for c = 0 to length do
+            let prefix = Seq.tryFind (fun sl -> sl = a.[0..c]) Prefixes
+            let postfix = Seq.tryFind (fun sl -> sl = a.[c..length]) Postfixes
+            if prefix.IsNone || postfix.IsNone
+        stems
+
     let Locale = CultureInfo.GetCultureInfo("en-US")
