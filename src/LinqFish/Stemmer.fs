@@ -3,20 +3,32 @@
 [<AutoOpen>]
 module Stemmer =
     open System.Globalization
-    open System.Text
     open System.Text.RegularExpressions
     
-    let public Affixes = 
-        [| "es", "ed", "ing", "en", "ness", "ly", "able", "tion" |]
-
-//    let isAffix s =
-//        Affixes |> Seq.iter(
-//            if (Regex.IsMatch(s, m)) then Regex.Replace(s, m, String.Empty)
-//            else String.Empty)
-
-    let public GetStem(v, n) =
-        match v with
-        | Affixes -> printfn "found an affix! %s" v
-        | _ -> printfn "null"
+    let public Postfixes = 
+        seq [ "es"; "ed"; "ing"; "en"; "ness"; "ly"; "able"; "esque"; "tion"; "s"; ]
+        
+    let public Prefixes = 
+        seq [ "pre"; "un"; "non"; "anti"; ]
+        
+    let public GetStem(v : string, n) =
+        let length = String.length(v) - 1
+        for c = 0 to length do
+            let prefix = Seq.tryFind (fun sl -> sl = v.[0..c]) Prefixes
+            let postfix = Seq.tryFind (fun sl -> sl = v.[c..length]) Postfixes
+            if prefix.IsSome then
+                printfn "Found prefix in %s! %s" v (prefix.Value.ToString())
+            if postfix.IsSome then
+                printfn "Found postfix in %s! %s" v (postfix.Value.ToString())
                 
+    let public GetStems(a : string, b) =
+        let length = String.length(a) - 1
+        [| for c = 0 to length do
+            let prefix = Seq.tryFind (fun sl -> sl = a.[0..c]) Prefixes
+            let postfix = Seq.tryFind (fun sl -> sl = a.[c..length]) Postfixes
+            if prefix.IsSome then 
+                yield Regex.Replace(a, prefix.Value.ToString(), "")
+            else if postfix.IsSome then 
+                yield Regex.Replace(a, postfix.Value.ToString(), "") |]
+
     let Locale = CultureInfo.GetCultureInfo("en-US")

@@ -11,27 +11,26 @@ module LinqFishConsole =
     let main argv = 
         printfn "Enter some text to begin:"
         let input = Console.ReadLine()
-
-//        let result = LinqFish.Chunker.Chunker.GetBigrams(input, ' ')
-//        let result2 = LinqFish.Chunker.Chunker.GetTrigrams(input, ' ')
-//        printfn "Bigrams:\n%s" <| GetBigrams(input, ' ')
-//        printfn "Trigrams:\n%s" <| GetTrigrams(input, ' ')
-//        printfn "Selected Bigrams:\n%s" <| Select <| GetBigrams(input, ' ')
-//        printfn "Selected Bigrams:\n%s" <| Select <| GetTrigrams(input, ' ')
-//        let result = Chunker.GetBigrams(input, ' ')
-//        let result2 = Chunker.GetTrigrams(input, ' ')
-//        let result3 = Chunker.Select(result)
-//        let result4 = Chunker.Select(result2)
-
-        let matcher =
-            for pair in Chunker.GetBigramsSep(input, ' ') do
-                Chunker.Select pair
-                Stemmer.GetStem pair
-
-        let stemmer =
+        
+        let stemmerBi =
             input
             |> Chunker.GetBigrams
             |> Seq.iter Stemmer.GetStem
+
+        let stemmer = 
+            input
+            |> Chunker.GetBigrams
+            |> Printers.BiPrinter
+
+        let stemmer2 =
+            input
+            |> Chunker.GetBigrams
+            |> Seq.iter (fun f -> Stemmer.GetStems f |> Printers.StemPrinter)
+            
+        let stemmerTri =
+            input
+            |> Chunker.GetTrigrams
+            |> Printers.TriPrinter
             
         let pause = Console.ReadLine()
         0
