@@ -23,12 +23,14 @@ module Stemmer =
                 
     let public GetStems(a : string, b) =
         let length = String.length(a) - 1
+        let mutable stems = List.empty
         for c = 0 to length do
             let prefix = Seq.tryFind (fun sl -> sl = a.[0..c]) Prefixes
             let postfix = Seq.tryFind (fun sl -> sl = a.[c..length]) Postfixes
-
-        if prefix.IsSome then Regex.Replace(a, prefix.Value.ToString(), "")
-        else if postfix.IsSome then Regex.Replace(a, postfix.Value.ToString(), "")
-        else ""
+            if prefix.IsSome then 
+                List.append stems [Regex.Replace(a, prefix.Value.ToString(), "")]
+            else if postfix.IsSome then 
+                List.append stems [Regex.Replace(a, postfix.Value.ToString(), "")]
+        stems
 
     let Locale = CultureInfo.GetCultureInfo("en-US")

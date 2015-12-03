@@ -38,6 +38,11 @@ module LinqFishConsole =
             for (a, b, c) in trigram do
                 printfn "Trigram: %s %s %s" a b c
 
+        let StemPrinter stems =
+            printfn "Stems:\r\n"
+            for stem in stems do
+                printfn "%s" stem
+
         let stemmerBi =
             input
             |> Chunker.GetBigrams
@@ -47,6 +52,11 @@ module LinqFishConsole =
             input
             |> Chunker.GetBigrams
             |> BiPrinter
+
+        let stemmer2 =
+            input
+            |> Chunker.GetBigrams
+            |> Seq.iter (fun f1 -> Stemmer.GetStems |> StemPrinter)
             
         let stemmerTri =
             input
