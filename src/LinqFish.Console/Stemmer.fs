@@ -28,9 +28,9 @@ module Stemmer =
             let prefix = Seq.tryFind (fun sl -> sl = a.[0..c]) Prefixes
             let postfix = Seq.tryFind (fun sl -> sl = a.[c..length]) Postfixes
             if prefix.IsSome then 
-                List.append stems [Regex.Replace(a, prefix.Value.ToString(), "")]
+                stems::[Regex.Replace(a, prefix.Value.ToString(), "")]
             else if postfix.IsSome then 
-                List.append stems [Regex.Replace(a, postfix.Value.ToString(), "")]
+                stems::[Regex.Replace(a, postfix.Value.ToString(), "")]
         stems
 
     let Locale = CultureInfo.GetCultureInfo("en-US")
