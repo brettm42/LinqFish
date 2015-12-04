@@ -4,13 +4,14 @@
 module Printers =
     open System.Globalization;
 
+    let public GenericPrinter input =
+        input |> Seq.iter (fun i -> printfn "%s" (i.ToString()))
+
     let public BiPrinter bigram =
-        for (a, b) in bigram do
-            printfn "Bigram: %s %s" a b
+        bigram |> Seq.iter (fun (a, b) -> printfn "Bigram: %s %s" a b)
 
     let public TriPrinter trigram =
-        for (a, b, c) in trigram do
-            printfn "Trigram: %s %s %s" a b c
+        trigram |> Seq.iter (fun (a, b, c) -> printfn "Trigram: %s %s %s" a b c)
 
     let public StemPrinter stems =
         stems |> Array.iter (fun f -> printfn "Stem: %s" f)
