@@ -11,8 +11,8 @@ module Stemmer =
     let public Prefixes = 
         seq [ "pre"; "un"; "non"; "anti"; ]
         
-    let public GetStem(v : string, n) =
-        let length = String.length(v) - 1
+    let public GetStem (v, n) =
+        let length = String.length(v : string) - 1
         for c = 0 to length do
             let prefix = Seq.tryFind (fun sl -> sl = v.[0..c]) Prefixes
             let postfix = Seq.tryFind (fun sl -> sl = v.[c..length]) Postfixes
@@ -21,8 +21,8 @@ module Stemmer =
             if postfix.IsSome then
                 printfn "Found postfix in %s! %s" v (postfix.Value.ToString())
                 
-    let public GetStems(a : string, b) =
-        let length = String.length(a) - 1
+    let public GetStems (a, b) =
+        let length = String.length(a : string) - 1
         [| for c = 0 to length do
             let prefix = Seq.tryFind (fun sl -> sl = a.[0..c]) Prefixes
             let postfix = Seq.tryFind (fun sl -> sl = a.[c..length]) Postfixes

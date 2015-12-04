@@ -6,30 +6,36 @@ module Chunker =
     open System.Globalization
     open System.Text
     open System.Text.RegularExpressions
+
+    let Space = " "
+
+    let StringPrep str sep =
+        ("^" + (sep : string) + (str : string).Trim() + sep + "$")
+            .Split(sep.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
     
-    let public GetBigrams (args : string) =
-        let arr = ("^ " + args.Trim() + " $").Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+    let public GetBigrams args =
+        let arr = StringPrep args Space
         let len = arr.Length - 2
         [| for a in 0 .. len do
-            yield (arr.[a], arr.[a + 1]) |]
+            yield arr.[a], arr.[a + 1] |]
                                                  
-    let public GetBigramsSep (args : string, separator : char) =
-        let arr = ("^" + separator.ToString() + args + separator.ToString() + "$").Split(separator)
+    let public GetBigramsSep args sep =
+        let arr = StringPrep args sep
         let len = arr.Length - 2
         [| for a in 0 .. len do
-            yield (arr.[a], arr.[a + 1]) |]
+            yield arr.[a], arr.[a + 1] |]
 
-    let public GetTrigrams(args : string) =
-        let arr = ("^ " + args + " $").Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+    let public GetTrigrams args =
+        let arr = StringPrep args Space
         let len = arr.Length - 2
         [| for a in 1 .. len do 
-            yield (arr.[a - 1], arr.[a], arr.[a + 1]) |]
+            yield arr.[a - 1], arr.[a], arr.[a + 1] |]
 
-    let public GetTrigramsSep(args : string, separator : char) =
-        let arr = ("^" + separator.ToString() + args + separator.ToString() + "$").Split(separator)
+    let public GetTrigramsSep args sep =
+        let arr = StringPrep args sep
         let len = arr.Length - 2
         [| for a in 1 .. len do 
-            yield (arr.[a - 1], arr.[a], arr.[a + 1]) |]
+            yield arr.[a - 1], arr.[a], arr.[a + 1] |]
 
     let public SelectSeq grams =
         seq { for gram in grams do
