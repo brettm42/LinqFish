@@ -44,11 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Lemmatizer.fs" />
-    <Compile Include="Stemmer.fs" />
     <Compile Include="Chunker.fs" />
-    <Compile Include="LinqFishConsole.fs" />
+    <Compile Include="Stemmer.fs" />
+    <Compile Include="Lemmatizer.fs" />
     <Compile Include="Printers.fs" />
+    <Compile Include="LinqFishConsole.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

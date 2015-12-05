@@ -6,7 +6,7 @@ module Stemmer =
     open System.Text.RegularExpressions
     
     let public Postfixes = 
-        seq [ "es"; "ed"; "ing"; "en"; "ness"; "ly"; "able"; "esque"; "tion"; "s"; ]
+        seq [ "es"; "ed"; "ing"; "en"; "ness"; "ly"; "able"; "esque"; "tion"; "'s"; "'ve";  ]
         
     let public Prefixes = 
         seq [ "pre"; "un"; "non"; "anti"; ]
