@@ -11,9 +11,10 @@ module Clauser =
         seq [ ";"; "." ]
 
     let public GetClauses str =
-        if Punctuation in str then
-            yield (str : string).Split(Punctuation, StringSplitOptions.RemoveEmptyEntries) 
-        else 
-            yield str
+//        if Punctuation in str then
+//            yield (str : string).Split(Punctuation, StringSplitOptions.RemoveEmptyEntries) 
+//        else 
+//            yield str
+        0
             
     let Locale = CultureInfo.GetCultureInfo("en-US")

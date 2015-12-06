@@ -49,12 +49,12 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <None Include="App.config" />
+    <Compile Include="Clauser.fs" />
+    <Compile Include="Chunker.fs" />
     <Compile Include="Stemmer.fs" />
     <Compile Include="Lemmatizer.fs" />
     <Compile Include="Printers.fs" />
     <Compile Include="LinqFishConsole.fs" />
-    <Compile Include="Clauser.fs" />
-    <Compile Include="Chunker.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
