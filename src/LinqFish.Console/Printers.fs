@@ -16,4 +16,8 @@ module Printers =
     let public StemPrinter stems =
         stems |> Array.iter (fun f -> printfn "Stem: %s" f)
 
+    let public ClausePrinter clauses =
+        for clause in clauses do
+            clause |> Seq.iter (fun i -> printfn "%s" (i.ToString()))
+
     let Locale = CultureInfo.GetCultureInfo("en-US")
