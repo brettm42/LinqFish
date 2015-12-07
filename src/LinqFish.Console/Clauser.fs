@@ -8,13 +8,12 @@ module Clauser =
     open System.Text.RegularExpressions
 
     let public Punctuation = 
-        seq [ ";"; "." ]
+        seq [ "; "; "! "; "? "; ". "; ]
 
     let public GetClauses str =
-//        if Punctuation in str then
-//            yield (str : string).Split(Punctuation, StringSplitOptions.RemoveEmptyEntries) 
-//        else 
-//            yield str
-        0
+        [| for sep in Punctuation do
+            let pre = (str : string).Split(sep.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+            if pre.Length > 1 then
+                yield pre |]
             
     let Locale = CultureInfo.GetCultureInfo("en-US")
