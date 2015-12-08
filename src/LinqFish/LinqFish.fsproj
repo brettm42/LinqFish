@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Clauser.fs" />
     <Compile Include="Chunker.fs" />
     <Compile Include="Stemmer.fs" />
     <Compile Include="Lemmatizer.fs" />

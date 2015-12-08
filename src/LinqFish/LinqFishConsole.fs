@@ -6,12 +6,15 @@ module LinqFishConsole =
     open System
     open System.IO
     open System.Text
-                    
-    [<EntryPoint>]
+    
     let main argv = 
         printfn "Enter some text to begin:"
         let input = Console.ReadLine()
         
+        let clauser1 =
+            Clauser.GetClauses input
+            |> Printers.ClausePrinter
+
         let stemmer1 = 
             input
             |> Chunker.GetBigrams
