@@ -1,0 +1,46 @@
+﻿<Window x:Class="LinqFish.Windows.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LinqFish.Windows.Views"
+        mc:Ignorable="d"
+        Title="LinqFish" Height="450" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <SolidColorBrush x:Key="LinqFishBlue">#FF3B7878</SolidColorBrush>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Content="LinqFish" Background="{StaticResource LinqFishBlue}" Foreground="WhiteSmoke" FontSize="20"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <Label Grid.Row="0" Content="Type text here:"/>
+            <TextBox Grid.Row="1" Text="{Binding Input}" TextWrapping="Wrap" KeyDown="TextBox_KeyDown"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <TreeView Grid.Column="0" ItemsSource="{Binding Clauses, Mode=OneWay, IsAsync=True}"/>
+            <TextBlock Grid.Column="1" Text="{Binding Clauses, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="2" Text="{Binding Bigrams, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap"/>
+        </Grid>
+    </Grid>
+</Window>
