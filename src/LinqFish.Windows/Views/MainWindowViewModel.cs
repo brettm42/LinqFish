@@ -11,8 +11,10 @@
 
     class MainWindowViewModel : NotifyPropertyChanged
     {
-        private string[] clauses;
-        private Tuple<string, string>[] bigrams;
+        private ClausalItem[] m_Clauses;
+        private ClausalItem m_Clause;
+        private BigramItem[] m_Bigrams;
+        private BigramItem m_Bigram;
 
         public MainWindowViewModel()
         {
@@ -20,8 +22,8 @@
         }
 
         public string Input { get; set; }
-
-        public string[] Clauses
+        
+        public ClausalItem[] Clauses
         {
             get
             {
@@ -34,15 +36,56 @@
             }
         }
 
-        public 
-
-        public GetBigrams(string input)
+        public ClausalItem SelectedClause
         {
-            var clauses = LinqFish.Clauser.GetClauses(input).FirstOrDefault(c => c.Any());
-
-            foreach (string clause in clauses)
+            get
             {
-                Tuple<string, string>[] bigrams = LinqFish.Chunker.GetBigrams(clause);
+                return m_Clause;
+            }
+            set
+            {
+                m_Clause = value;
+                this.OnNotifyPropertyChanged();
+            }
+        }
+
+        public BigramItem[] Bigrams
+        {
+            get
+            {
+                return this.SelectedClause.Bigrams;
+            }
+        }
+
+        public BigramItem SelectedBigram
+        {
+            get
+            {
+                return m_Bigram;
+            }
+            set
+            {
+                m_Bigram = value;
+                this.OnNotifyPropertyChanged();
+            }
+        }
+
+        public void GetBigrams()
+        {
+            var clauses = LinqFish.Clauser.GetClauses(this.Input).FirstOrDefault(c => c.Any());
+
+            if (clauses != null)
+            {
+                this.Clauses = clauses.Aggregate(
+                    new List<ClausalItem>(),
+                    (list, str) =>
+                    {
+                        list.Add(
+                            new ClausalItem(str, LinqFish.Chunker.GetBigrams(str)));
+
+                        return list;
+                    })
+                    .ToArray();
             }
         }
     }
