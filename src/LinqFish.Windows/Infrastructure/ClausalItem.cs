@@ -64,6 +64,6 @@
         public override string ToString() => this.Clause;
 
         public string ToStringDetail() => 
-            $"{this.Clause}\r\n{Bigrams.Aggregate(string.Empty, (str, bigram) => $"Bigram: {bigram.Item1} {bigram.Item2}\r\n")}";
+            $"{this.Clause}\r\n{this.Bigrams.Aggregate(string.Empty, (str, bigram) => $"Bigram: {bigram.Item1} {bigram.Item2}\r\n")}";
     }
 }

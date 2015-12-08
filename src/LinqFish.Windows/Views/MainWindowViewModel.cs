@@ -16,22 +16,17 @@
         private BigramItem[] m_Bigrams;
         private BigramItem m_Bigram;
 
-        public MainWindowViewModel()
-        {
-            
-        }
-
         public string Input { get; set; }
         
         public ClausalItem[] Clauses
         {
             get
             {
-                return m_Clauses;
+                return this.m_Clauses;
             }
             set
             {
-                m_Clauses = value;
+                this.m_Clauses = value;
                 this.OnNotifyPropertyChanged();
             }
         }
@@ -40,11 +35,11 @@
         {
             get
             {
-                return m_Clause;
+                return this.m_Clause;
             }
             set
             {
-                m_Clause = value;
+                this.m_Clause = value;
                 this.OnNotifyPropertyChanged();
             }
         }
@@ -55,11 +50,11 @@
         {
             get
             {
-                return m_Bigram;
+                return this.m_Bigram;
             }
             set
             {
-                m_Bigram = value;
+                this.m_Bigram = value;
                 this.OnNotifyPropertyChanged();
             }
         }

@@ -37,6 +37,12 @@ module Chunker =
         [| for a in 1 .. len do 
             yield arr.[a - 1], arr.[a], arr.[a + 1] |]
 
+    let public GetNGram args size =
+        let arr = StringPrep args Space
+        let len = arr.Length - 2
+        [| for a in 0 .. len do 
+            yield arr.[a] |]
+
     let public SelectSeq grams =
         seq { for gram in grams do
                 if gram.ToString().Contains("select") then

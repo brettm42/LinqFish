@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LinqFish.Windows.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -64,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\ArrayToMultiLineStringConverter.cs" />
     <Compile Include="Infrastructure\BigramItem.cs" />
     <Compile Include="Infrastructure\ClausalItem.cs" />
     <Compile Include="Infrastructure\NotifyPropertyChanged.cs" />

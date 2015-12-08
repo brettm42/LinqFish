@@ -23,11 +23,11 @@
         {
             get
             {
-                return m_Bigram;
+                return this.m_Bigram;
             }
             set
             {
-                m_Bigram = value;
+                this.m_Bigram = value;
                 this.OnNotifyPropertyChanged();
             }
         }
