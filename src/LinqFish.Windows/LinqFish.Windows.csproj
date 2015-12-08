@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\ArrayToStringConverter.cs" />
     <Compile Include="Infrastructure\ArrayToMultiLineStringConverter.cs" />
     <Compile Include="Infrastructure\BigramItem.cs" />
     <Compile Include="Infrastructure\ClausalItem.cs" />
