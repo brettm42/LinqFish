@@ -64,8 +64,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\BigramItem.cs" />
     <Compile Include="Infrastructure\ClausalItem.cs" />
-    <Compile Include="Infrastructure\OnNotifyPropertyChangedBase.cs" />
+    <Compile Include="Infrastructure\NotifyPropertyChanged.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

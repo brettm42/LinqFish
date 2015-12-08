@@ -20,9 +20,19 @@
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel ViewModel => this.DataContext as MainWindowViewModel;
+
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                this.ViewModel.GetBigrams();
+            }
         }
     }
 }

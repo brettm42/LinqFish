@@ -9,7 +9,7 @@
     using LinqFish;
     using LinqFish.Windows.Infrastructure;
 
-    class MainWindowViewModel : NotifyPropertyChanged
+    public class MainWindowViewModel : NotifyPropertyChanged
     {
         private ClausalItem[] m_Clauses;
         private ClausalItem m_Clause;
@@ -27,11 +27,11 @@
         {
             get
             {
-                return clauses;
+                return m_Clauses;
             }
             set
             {
-                clauses = value;
+                m_Clauses = value;
                 this.OnNotifyPropertyChanged();
             }
         }
@@ -49,13 +49,7 @@
             }
         }
 
-        public BigramItem[] Bigrams
-        {
-            get
-            {
-                return this.SelectedClause.Bigrams;
-            }
-        }
+        public BigramItem[] Bigrams => this.SelectedClause?.Bigrams;
 
         public BigramItem SelectedBigram
         {
