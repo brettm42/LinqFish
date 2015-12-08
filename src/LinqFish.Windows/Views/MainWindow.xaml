@@ -4,12 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LinqFish.Windows.Views"
+        xmlns:converters="clr-namespace:LinqFish.Windows.Infrastructure"
         mc:Ignorable="d"
         Title="LinqFish" Height="450" Width="525">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <converters:ArrayToMultiLineStringConverter x:Key="ArrayToMultiLineStringConverter"/>
+        <converters:ArrayToStringConverter x:Key="ArrayToStringConverter"/>
         <SolidColorBrush x:Key="LinqFishBlue">#FF3B7878</SolidColorBrush>
     </Window.Resources>
     <Grid>
@@ -41,12 +44,15 @@
             <TreeView Grid.Column="0" ItemsSource="{Binding Clauses, Mode=OneWay, IsAsync=True}">
                 <TreeView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Bigrams, Mode=OneWay, IsAsync=True}"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Clause, Mode=OneWay, IsAsync=True}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Bigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToMultiLineStringConverter}}"/>
+                        </StackPanel>
                     </DataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <TextBlock Grid.Column="1" Text="{Binding Clauses, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap"/>
-            <TextBlock Grid.Column="2" Text="{Binding Bigrams, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="1" Text="{Binding Clauses, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="2" Text="{Binding Bigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
         </Grid>
     </Grid>
 </Window>
