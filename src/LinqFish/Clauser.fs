@@ -8,7 +8,7 @@ module Clauser =
     open System.Text.RegularExpressions
 
     let public Punctuation = 
-        seq [ "; "; "! "; "? "; ". "; ]
+        seq [ ";"; "!"; "?"; "."; ]
 
     let public GetClauses str =
         [| for sep in Punctuation do

@@ -70,7 +70,7 @@
                     (list, str) =>
                     {
                         list.Add(
-                            new ClausalItem(str, LinqFish.Chunker.GetBigrams(str)));
+                            new ClausalItem(str, LinqFish.Chunker.GetBigrams(str.Trim())));
 
                         return list;
                     })
