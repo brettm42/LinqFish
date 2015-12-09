@@ -1,15 +1,15 @@
 ﻿namespace LinqFish.Windows.Infrastructure
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    public class ClausalItem : NotifyPropertyChanged
+    public class ClausalItem : NotifyPropertyChanged, IEnumerable
     {
         private string m_Clause;
         private BigramItem[] m_Bigrams;
+        private TrigramItem[] m_Trigrams;
 
         public ClausalItem()
         {
@@ -19,6 +19,12 @@
         {
             this.Clause = clause;
             this.SetBigrams(bigrams);
+        }
+
+        public ClausalItem(string clause, Tuple<string, string, string>[] trigrams)
+        {
+            this.Clause = clause;
+            this.SetTrigrams(trigrams);
         }
 
         public string Clause
@@ -47,6 +53,19 @@
             }
         }
 
+        public TrigramItem[] Trigrams
+        {
+            get
+            {
+                return m_Trigrams;
+            }
+            set
+            {
+                m_Trigrams = value;
+                this.OnNotifyPropertyChanged();
+            }
+        }
+
         public void SetBigrams(Tuple<string, string>[] bigrams)
         {
             this.Bigrams =
@@ -55,6 +74,20 @@
                     (list, tup) =>
                     {
                         list.Add(new BigramItem(tup));
+
+                        return list;
+                    })
+                    .ToArray();
+        }
+
+        public void SetTrigrams(Tuple<string, string, string>[] trigrams)
+        {
+            this.Trigrams =
+                trigrams.Aggregate(
+                    new List<TrigramItem>(),
+                    (list, tup) =>
+                    {
+                        list.Add(new TrigramItem(tup));
 
                         return list;
                     })

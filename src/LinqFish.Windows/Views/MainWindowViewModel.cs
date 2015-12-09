@@ -70,7 +70,50 @@
                     (list, str) =>
                     {
                         list.Add(
-                            new ClausalItem(str, LinqFish.Chunker.GetBigrams(str)));
+                            new ClausalItem(str.Trim(), LinqFish.Chunker.GetBigrams(str.Trim())));
+
+                        return list;
+                    })
+                    .ToArray();
+            }
+        }
+
+        public void GetTrigrams()
+        {
+            var clauses = LinqFish.Clauser.GetClauses(this.Input).FirstOrDefault(c => c.Any());
+
+            if (clauses != null)
+            {
+                this.Clauses = clauses.Aggregate(
+                    new List<ClausalItem>(),
+                    (list, str) =>
+                    {
+                        list.Add(
+                            new ClausalItem(str.Trim(), LinqFish.Chunker.GetTrigrams(str.Trim())));
+
+                        return list;
+                    })
+                    .ToArray();
+            }
+        }
+
+        public void GetNgrams()
+        {
+            var clauses = LinqFish.Clauser.GetClauses(this.Input).FirstOrDefault(c => c.Any());
+
+            if (clauses != null)
+            {
+                this.Clauses = clauses.Aggregate(
+                    new List<ClausalItem>(),
+                    (list, str) =>
+                    {
+                        list.Add(
+                            new ClausalItem
+                            {
+                                this.Clause = str.Trim(),
+                                this.Bigrams = LinqFish.Chunker.GetBigrams(str.Trim()),
+                                this.Trigrams = LinqFish.Chunker.GetTrigrams(str.Trim()),
+                            });
 
                         return list;
                     })

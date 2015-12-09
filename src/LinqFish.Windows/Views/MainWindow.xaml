@@ -52,7 +52,7 @@
                 </TreeView.ItemTemplate>
             </TreeView>
             <TextBlock Grid.Column="1" Text="{Binding Clauses, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
-            <TextBlock Grid.Column="2" Text="{Binding Bigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="2" Text="{Binding Trigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
         </Grid>
     </Grid>
 </Window>

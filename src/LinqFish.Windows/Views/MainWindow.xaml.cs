@@ -31,7 +31,8 @@
         {
             if (e.Key == Key.Enter)
             {
-                this.ViewModel.GetBigrams();
+                //this.ViewModel.GetBigrams();
+                this.ViewModel.GetNgrams();
             }
         }
     }
