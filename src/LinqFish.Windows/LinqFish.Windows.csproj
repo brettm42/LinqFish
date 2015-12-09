@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Infrastructure\ArrayToStringConverter.cs" />
     <Compile Include="Infrastructure\ArrayToMultiLineStringConverter.cs" />
+    <Compile Include="Infrastructure\TrigramItem.cs" />
     <Compile Include="Infrastructure\BigramItem.cs" />
     <Compile Include="Infrastructure\ClausalItem.cs" />
     <Compile Include="Infrastructure\NotifyPropertyChanged.cs" />
