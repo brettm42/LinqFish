@@ -48,6 +48,7 @@
     <Compile Include="Chunker.fs" />
     <Compile Include="Stemmer.fs" />
     <Compile Include="Lemmatizer.fs" />
+    <Compile Include="Calculator.fs" />
     <Compile Include="Printers.fs" />
     <Compile Include="LinqFishConsole.fs" />
   </ItemGroup>

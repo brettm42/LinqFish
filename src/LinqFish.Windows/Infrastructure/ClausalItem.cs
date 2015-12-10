@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class ClausalItem : NotifyPropertyChanged, IEnumerable
+    public class ClausalItem : NotifyPropertyChanged
     {
         private string m_Clause;
         private BigramItem[] m_Bigrams;
