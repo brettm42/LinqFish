@@ -38,7 +38,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
-                <ColumnDefinition />
+                <!--<ColumnDefinition />-->
             </Grid.ColumnDefinitions>
 
             <TreeView Grid.Column="0" ItemsSource="{Binding Clauses, Mode=OneWay, IsAsync=True}">
@@ -46,13 +46,14 @@
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="{Binding Clause, Mode=OneWay, IsAsync=True}" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Bigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToMultiLineStringConverter}}"/>
+                            <TextBlock Text="{Binding Bigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToMultiLineStringConverter}}" />
+                            <TextBlock Text="{Binding Trigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToMultiLineStringConverter}}" />
                         </StackPanel>
                     </DataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <TextBlock Grid.Column="1" Text="{Binding Clauses, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
-            <TextBlock Grid.Column="2" Text="{Binding Trigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="1" Text="{Binding SelectedClause, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
+            <!--<TextBlock Grid.Column="2" Text="{Binding Trigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>-->
         </Grid>
     </Grid>
 </Window>

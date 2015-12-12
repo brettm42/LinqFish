@@ -15,6 +15,8 @@
         private ClausalItem m_Clause;
         private BigramItem[] m_Bigrams;
         private BigramItem m_Bigram;
+        private TrigramItem[] m_Trigrams;
+        private TrigramItem m_Trigram;
 
         public string Input { get; set; }
         
@@ -78,6 +80,21 @@
             }
         }
 
+        public TrigramItem[] Trigrams => this.SelectedClause?.Trigrams;
+
+        public TrigramItem SelectedTrigram
+        {
+            get
+            {
+                return this.m_Trigram;
+            }
+            set
+            {
+                this.m_Trigram = value;
+                this.OnNotifyPropertyChanged();
+            }
+        }
+
         public void GetTrigrams()
         {
             var clauses = LinqFish.Clauser.GetClauses(this.Input).FirstOrDefault(c => c.Any());
@@ -107,13 +124,11 @@
                     new List<ClausalItem>(),
                     (list, str) =>
                     {
-                        list.Add(
-                            new ClausalItem
-                            {
-                                this.Clause = str.Trim(),
-                                this.Bigrams = LinqFish.Chunker.GetBigrams(str.Trim()),
-                                this.Trigrams = LinqFish.Chunker.GetTrigrams(str.Trim()),
-                            });
+                        var cItem = new ClausalItem { Clause = str.Trim() };
+                        cItem.SetBigrams(LinqFish.Chunker.GetBigrams(str.Trim()));
+                        cItem.SetTrigrams(LinqFish.Chunker.GetTrigrams(str.Trim()));
+
+                        list.Add(cItem);
 
                         return list;
                     })
