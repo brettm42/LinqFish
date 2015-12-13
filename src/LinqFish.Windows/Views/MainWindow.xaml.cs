@@ -14,6 +14,7 @@
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using LinqFish.Windows.Infrastructure;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -34,6 +35,16 @@
                 //this.ViewModel.GetBigrams();
                 this.ViewModel.GetNgrams();
             }
+        }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            //this.ViewModel.SelectedClause = (sender as TreeView).SelectedItem as ClausalItem;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.GetWordCounts();
         }
     }
 }

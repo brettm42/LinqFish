@@ -19,13 +19,10 @@
             string concatStr = string.Empty;
             foreach (object item in value as IEnumerable)
             {
-                concatStr += $"{item},\r\n";
+                concatStr += $"{item}, ";
             }
 
-            return concatStr.Trim()
-                .TrimEnd("\r\n".ToCharArray())
-                .Trim(',')
-                .Trim();
+            return concatStr.Trim().Trim(',').Trim();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

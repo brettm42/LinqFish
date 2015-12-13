@@ -38,10 +38,10 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
-                <!--<ColumnDefinition />-->
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TreeView Grid.Column="0" ItemsSource="{Binding Clauses, Mode=OneWay, IsAsync=True}">
+            <TreeView Grid.Column="0" ItemsSource="{Binding Clauses, Mode=OneWay, IsAsync=True}" SelectedItemChanged="TreeView_SelectedItemChanged">
                 <TreeView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -52,8 +52,10 @@
                     </DataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <TextBlock Grid.Column="1" Text="{Binding SelectedClause, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>
-            <!--<TextBlock Grid.Column="2" Text="{Binding Trigrams, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap"/>-->
+            <StackPanel Grid.Column="1">
+                <Button Content="Get Word Counts" Click="Button_Click" Padding="5" />
+            </StackPanel>
+            <TextBlock Grid.Column="2" Text="{Binding Output, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap" />
         </Grid>
     </Grid>
 </Window>

@@ -11,6 +11,7 @@
 
     public class MainWindowViewModel : NotifyPropertyChanged
     {
+        private string m_Output;
         private ClausalItem[] m_Clauses;
         private ClausalItem m_Clause;
         private BigramItem[] m_Bigrams;
@@ -19,6 +20,19 @@
         private TrigramItem m_Trigram;
 
         public string Input { get; set; }
+
+        public string Output
+        {
+            get
+            {
+                return m_Output;
+            }
+            private set
+            {
+                m_Output = value;
+                this.OnNotifyPropertyChanged();
+            }
+        }
         
         public ClausalItem[] Clauses
         {
@@ -26,7 +40,7 @@
             {
                 return this.m_Clauses;
             }
-            set
+            private set
             {
                 this.m_Clauses = value;
                 this.OnNotifyPropertyChanged();
@@ -134,6 +148,20 @@
                     })
                     .ToArray();
             }
+        }
+
+        public void GetWordCounts()
+        {
+            List<Tuple<string, string>> bigrams = new List<Tuple<string, string>>();
+
+            foreach (ClausalItem clause in this.Clauses)
+            {
+                bigrams.AddRange(clause.GetBigrams());
+            }
+            
+            ArrayToStringConverter converter = new ArrayToStringConverter();
+
+            this.Output = converter.Convert(LinqFish.Calculator.GetWordCounts(bigrams), null, null, null).ToString();
         }
     }
 }

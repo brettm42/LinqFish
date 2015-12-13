@@ -94,6 +94,18 @@
                     .ToArray();
         }
 
+        public Tuple<string, string>[] GetBigrams()
+        {
+            List<Tuple<string, string>> bigrams = new List<Tuple<string, string>>();
+
+            foreach (BigramItem bigram in this.Bigrams)
+            {
+                bigrams.Add(new Tuple<string, string>(bigram.Item1, bigram.Item2));
+            }
+
+            return bigrams.ToArray();
+        }
+
         public override string ToString() => this.Clause;
 
         public string ToStringDetail() => 
