@@ -9,6 +9,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LinqFish", "src\LinqFish\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqFish.Windows", "src\LinqFish.Windows\LinqFish.Windows.csproj", "{BB58CA27-96FB-4431-99AA-58054F3E2E7B}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LinqFish.Tests", "tests\LinqFish.Tests\LinqFish.Tests.fsproj", "{06700F47-254F-41BA-AD2F-80CF3B979D5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BB58CA27-96FB-4431-99AA-58054F3E2E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB58CA27-96FB-4431-99AA-58054F3E2E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB58CA27-96FB-4431-99AA-58054F3E2E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06700F47-254F-41BA-AD2F-80CF3B979D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06700F47-254F-41BA-AD2F-80CF3B979D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06700F47-254F-41BA-AD2F-80CF3B979D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06700F47-254F-41BA-AD2F-80CF3B979D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
