@@ -19,7 +19,10 @@
             string concatStr = string.Empty;
             foreach (object item in value as IEnumerable)
             {
-                concatStr += $"{item}, ";
+                if (!string.IsNullOrWhiteSpace(item.ToString()))
+                {
+                    concatStr += $"{item.ToString().Trim()}, ";
+                }
             }
 
             return concatStr.Trim().Trim(',').Trim();
