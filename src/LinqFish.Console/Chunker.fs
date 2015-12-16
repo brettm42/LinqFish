@@ -40,8 +40,8 @@ module Chunker =
     let public GetNGram args size =
         let arr = StringPrep args Space
         let len = arr.Length - 2
-        [| for a in 0 .. len do 
-            yield arr.[a] |]
+        [| for a in 0 .. size .. len do 
+            yield arr.[a..size] |]
 
     let public SelectSeq grams =
         seq { for gram in grams do

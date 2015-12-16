@@ -152,6 +152,8 @@
 
         public void GetWordCounts()
         {
+            if (this.Clauses == null) return;
+
             List<Tuple<string, string>> bigrams = new List<Tuple<string, string>>();
 
             foreach (ClausalItem clause in this.Clauses)
@@ -160,7 +162,6 @@
             }
             
             ArrayToStringConverter converter = new ArrayToStringConverter();
-
             this.Output = converter.Convert(LinqFish.Calculator.GetWordCounts(bigrams), null, null, null).ToString();
             this.Output = converter.Convert(LinqFish.Calculator.GetInstanceDistribution(bigrams), null, null, null).ToString();
         }

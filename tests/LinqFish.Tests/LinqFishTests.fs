@@ -5,6 +5,7 @@ module LinqFishTests =
     open LinqFish
     open Microsoft.VisualStudio.TestTools.UnitTesting
 
+    [<TestMethod>]
     let public GetClausesTest() = 
         let result = LinqFish.Clauser.GetClauses "testing string"
 
