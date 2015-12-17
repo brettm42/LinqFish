@@ -42,8 +42,9 @@
             //this.ViewModel.SelectedClause = (sender as TreeView).SelectedItem as ClausalItem;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void WordCountButton_Click(object sender, RoutedEventArgs e)
         {
+            this.ViewModel.GetNgrams();
             this.ViewModel.GetWordCounts();
         }
     }
