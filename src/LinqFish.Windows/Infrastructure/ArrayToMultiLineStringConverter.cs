@@ -35,21 +35,5 @@
         {
             throw new NotImplementedException();
         }
-
-        //public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
-        //    (value as string)?
-        //        .Split(',')
-        //        .Aggregate(new List<string>(),
-        //            (l, s) =>
-        //            {
-        //                if (!string.IsNullOrEmpty(s))
-        //                {
-        //                    l.Add(s.Trim());
-        //                }
-
-        //                return l;
-        //            })
-        //    .ToArray()
-        //    ?? new string[0];
     }
 }

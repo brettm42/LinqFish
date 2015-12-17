@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\DictionaryToStringConverter.cs" />
     <Compile Include="Infrastructure\ArrayToStringConverter.cs" />
     <Compile Include="Infrastructure\ArrayToMultiLineStringConverter.cs" />
     <Compile Include="Infrastructure\TrigramItem.cs" />

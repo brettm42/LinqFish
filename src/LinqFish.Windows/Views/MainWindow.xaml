@@ -13,6 +13,7 @@
     <Window.Resources>
         <converters:ArrayToMultiLineStringConverter x:Key="ArrayToMultiLineStringConverter"/>
         <converters:ArrayToStringConverter x:Key="ArrayToStringConverter"/>
+        <converters:DictionaryToStringConverter x:Key="DictionaryToStringConverter" />
         <SolidColorBrush x:Key="LinqFishBlue">#FF3B7878</SolidColorBrush>
     </Window.Resources>
     <Grid>
@@ -53,9 +54,9 @@
                 </TreeView.ItemTemplate>
             </TreeView>
             <StackPanel Grid.Column="1">
-                <Button Content="Get Word Counts" Click="Button_Click" Padding="5" />
+                <Button Content="Get Word Counts" Click="WordCountButton_Click" Padding="5" />
             </StackPanel>
-            <TextBlock Grid.Column="2" Text="{Binding Output, Mode=OneWay, IsAsync=True, Converter={StaticResource ArrayToStringConverter}}" TextWrapping="Wrap" />
+            <TextBlock Grid.Column="2" Text="{Binding Output, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap" />
         </Grid>
     </Grid>
 </Window>
