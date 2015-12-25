@@ -8,7 +8,8 @@ module Calculator =
     open System.Text.RegularExpressions
     
     let Count (dict:Dictionary<string, int>) word count =
-        if dict.ContainsKey(word) then dict.[word] <- count dict.[word]
+        if dict.ContainsKey(word) 
+........... then dict.[word] <- count dict.[word]
         else dict.[word] <- count 0
 
     let public GetInstanceDistribution ngrams =
