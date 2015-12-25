@@ -13,7 +13,8 @@ module Clauser =
     let public GetClauses str =
         [| for sep in Punctuation do
             if (str : string).Contains(sep) then
-                let pre = str.Split(sep.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                let pre =
+                    str.Split(sep.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                 if pre.Length >= 1 then
                     yield pre |]
             
