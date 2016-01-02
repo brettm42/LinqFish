@@ -5,7 +5,6 @@ module Calculator =
     open System.Collections.Generic
     open System.Globalization
     open System.Text
-    open System.Text.RegularExpressions
     
     let Count (dict:Dictionary<string, int>) word count =
         if dict.ContainsKey(word) then dict.[word] <- count dict.[word]

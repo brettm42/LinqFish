@@ -5,7 +5,6 @@ module Clauser =
     open System
     open System.Globalization
     open System.Text
-    open System.Text.RegularExpressions
 
     let public Punctuation = 
         seq [ ";"; "!"; "?"; "."; ]

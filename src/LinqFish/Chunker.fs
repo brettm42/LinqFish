@@ -5,7 +5,6 @@ module Chunker =
     open System
     open System.Globalization
     open System.Text
-    open System.Text.RegularExpressions
 
     let Space = " "
 
