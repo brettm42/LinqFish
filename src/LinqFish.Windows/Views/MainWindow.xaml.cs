@@ -44,8 +44,11 @@
 
         private void WordCountButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ViewModel.GetNgrams();
-            this.ViewModel.GetWordCounts();
+            if (!string.IsNullOrWhiteSpace(this.TextInputBox.Text))
+            {
+                this.ViewModel.GetNgrams();
+                this.ViewModel.GetWordCounts();
+            }
         }
     }
 }

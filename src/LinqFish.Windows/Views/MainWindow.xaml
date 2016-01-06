@@ -21,6 +21,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         
         <Label Grid.Row="0" Content="LinqFish" Background="{StaticResource LinqFishBlue}" Foreground="WhiteSmoke" FontSize="20"/>
@@ -32,17 +33,20 @@
             </Grid.RowDefinitions>
             
             <Label Grid.Row="0" Content="Type text here:"/>
-            <TextBox Grid.Row="1" Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" KeyDown="TextBox_KeyDown"/>
+            <TextBox x:Name="TextInputBox" Grid.Row="1" Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" KeyDown="TextBox_KeyDown"/>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
-                <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="35" />
+            </Grid.RowDefinitions>
 
-            <TreeView Grid.Column="0" ItemsSource="{Binding Clauses, Mode=OneWay, IsAsync=True}" SelectedItemChanged="TreeView_SelectedItemChanged">
+            <TreeView Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Clauses, Mode=OneWay, IsAsync=True}" SelectedItemChanged="TreeView_SelectedItemChanged">
                 <TreeView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -53,10 +57,12 @@
                     </DataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <StackPanel Grid.Column="1">
+            
+            <StackPanel Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center">
                 <Button Content="Get Word Counts" Click="WordCountButton_Click" Padding="5" />
             </StackPanel>
-            <TextBlock Grid.Column="2" Text="{Binding Output, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap" />
+            
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Output, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap" />
         </Grid>
     </Grid>
 </Window>
