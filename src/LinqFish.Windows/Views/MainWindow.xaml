@@ -57,10 +57,8 @@
                     </DataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            
-            <StackPanel Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center">
-                <Button Content="Get Word Counts" Click="WordCountButton_Click" Padding="5" />
-            </StackPanel>
+
+            <Button Grid.ColumnSpan="2" Grid.Row="1" Content="Get Word Counts" Click="WordCountButton_Click" />
             
             <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Output, Mode=OneWay, IsAsync=True}" TextWrapping="Wrap" />
         </Grid>

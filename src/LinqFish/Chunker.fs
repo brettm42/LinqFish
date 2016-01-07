@@ -9,7 +9,7 @@ module Chunker =
     let Space = " "
 
     let StringPrep str sep =
-        ("^" + (sep : string) + (str : string).Trim() + sep + "$")
+        ("^" + (sep : string) + (str : string).Trim().ToLowerInvariant() + sep + "$")
             .Split(sep.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
     
     let public GetBigrams args =

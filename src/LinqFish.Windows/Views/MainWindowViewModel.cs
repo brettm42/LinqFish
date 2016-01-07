@@ -161,8 +161,7 @@
             }
             
             ArrayToStringConverter converter = new ArrayToStringConverter();
-            this.Output = converter.Convert(LinqFish.Calculator.GetWordCounts(bigrams), null, null, null).ToString();
-            this.Output += "\r\n" + converter.Convert(LinqFish.Calculator.GetInstanceDistribution(bigrams), null, null, null);
+            this.Output = $"Word Counts:\r\n{converter.Convert(LinqFish.Calculator.GetWordCounts(bigrams), null, null, null).ToString()}\r\nWord Frequency:\r\n{converter.Convert(LinqFish.Calculator.GetInstanceDistribution(bigrams), null, null, null)}";
         }
     }
 }
